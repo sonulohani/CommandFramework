@@ -1,3 +1,13 @@
+/*
+* CommandFramework
+*
+* Copyright (C) 2018-2019 Sonu Lohani
+*
+*    Distributed under the Boost Software License, Version 1.0.
+*    (See accompanying file LICENSE_1_0.txt or copy at
+*    http://www.boost.org/LICENSE_1_0.txt)
+*/
+
 #pragma once
 
 #include "ICommand.h"
@@ -6,28 +16,16 @@
 
 namespace CommandFramework 
 {
-
-	template<typename RetType = void, typename... Args>
-	class BasicCommand : public ICommand<RetType, Args...>
+	template<typename Func = std::function<void()>>
+	class BasicCommand : public ICommand
 	{
-		using Func = std::function<RetType(Args...)>;
 	public:
 		BasicCommand(const Func &func) :
 			m_func(func)
-		{
-			execute();
-		}
-
-		virtual void undo() override { 
-			throw NotImplementedException(); 
-		};
-
-		virtual void redo() override { 
-			throw NotImplementedException(); 
-		};
+		{}
 
 		virtual void execute() override {
-			m_func(Args...);
+			m_func();
 		}
 
 	private:
