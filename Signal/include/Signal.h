@@ -10,6 +10,7 @@
 
 #include <functional>
 #include <unordered_map>
+#include <type_traits>
 
 template<typename R = void, typename... Args>
 class Signal
@@ -31,7 +32,7 @@ public:
 	}
 
 	template <typename T>
-	uint32_t connect(T *callable, R(T::*func)(Args...))
+	uint32_t connect(T *callable, R(T::*func)(Args...) const)
 	{
 		return connect([=](Args... args)
 		{
@@ -44,18 +45,6 @@ public:
 		for (auto slot : m_idToSlotMap)
 		{
 			slot.second(args...);
-		}
-	}
-
-	R emit(uint32_t id, Args... args)
-	{
-		if(std::is_same<R, void>::value_type)
-		{
-			m_idToSlotMap[id](args...);
-		}
-		else
-		{
-			return m_idToSlotMap[id](args...);
 		}
 	}
 

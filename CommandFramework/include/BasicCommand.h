@@ -13,6 +13,7 @@
 #include "ICommand.h"
 #include "Exception.h"
 #include <functional>
+#include <xtr1common>
 
 namespace CommandFramework 
 {
@@ -24,24 +25,6 @@ namespace CommandFramework
 			m_func(func)
 		{}
 
-		virtual void execute() override {
-			m_func();
-		}
-
-	private:
-		Func m_func;
-	};
-
-	template<typename RetType, typename... Args, typename CallableType = void>
-	class BasicCommand : public ICommand
-	{
-		using Func = std::is_same<CallableType, void>::value ? R(*)(Args...) : R(CallableType::(*))(Args...);
-	public:
-		explicit BasicCommand(const Func &func) : 
-			m_func(func)
-		{}
-
-		
 		virtual void execute() override {
 			m_func();
 		}
