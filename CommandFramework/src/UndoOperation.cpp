@@ -8,17 +8,17 @@
 *    http://www.boost.org/LICENSE_1_0.txt)
 */
 
-#include "UndoCommand.h"
+#include "UndoOperation.h"
 #include "ICommand.h"
 
 namespace CommandFramework
 {
-	UndoCommand::UndoCommand(ICommand * pCommand)
+	UndoOperation::UndoOperation(ICommand * pCommand)
 	{
 		m_pUndoCommandStack.push(pCommand);
 	}
 
-	UndoCommand::UndoCommand(std::initializer_list<ICommand*> initializer_list)
+	UndoOperation::UndoOperation(std::initializer_list<ICommand*> initializer_list)
 	{
 		for (const auto &pCommand : initializer_list)
 		{
@@ -26,15 +26,15 @@ namespace CommandFramework
 		}
 	}
 
-	UndoCommand::~UndoCommand()
+	UndoOperation::~UndoOperation()
 	{}
 
-	void UndoCommand::pushCommand(ICommand *pCommand)
+	void UndoOperation::pushCommand(ICommand *pCommand)
 	{
 		m_pUndoCommandStack.push(pCommand);
 	}
 
-	void UndoCommand::undo()
+	void UndoOperation::undo()
 	{
 		if (m_pUndoCommandStack.empty())
 		{

@@ -8,27 +8,27 @@
 *    http://www.boost.org/LICENSE_1_0.txt)
 */
 
-#include "UndoRedoCommand.h"
+#include "UndoRedoOperation.h"
 #include "ICommand.h"
 
 namespace CommandFramework 
 {
-	UndoRedoCommand::UndoRedoCommand() : 
-		UndoCommand()
+	UndoRedoOperation::UndoRedoOperation() : 
+		UndoOperation()
 	{
 	}
-	UndoRedoCommand::UndoRedoCommand(ICommand *pCommand) :
-		UndoCommand(pCommand)
+	UndoRedoOperation::UndoRedoOperation(ICommand *pCommand) :
+		UndoOperation(pCommand)
 	{}
 
-	UndoRedoCommand::UndoRedoCommand(std::initializer_list<ICommand *> initializer_list) : 
-		UndoCommand(initializer_list)
+	UndoRedoOperation::UndoRedoOperation(std::initializer_list<ICommand *> initializer_list) : 
+		UndoOperation(initializer_list)
 	{}
 
-	UndoRedoCommand::~UndoRedoCommand()
+	UndoRedoOperation::~UndoRedoOperation()
 	{}
 
-	void UndoRedoCommand::redo()
+	void UndoRedoOperation::redo()
 	{
 		if (m_pRedoCommandStack.empty())
 		{
@@ -39,10 +39,10 @@ namespace CommandFramework
 		m_pUndoCommandStack.push(pCommand);
 	}
 
-	void UndoRedoCommand::undo()
+	void UndoRedoOperation::undo()
 	{
 		auto pCommand = m_pUndoCommandStack.top();
-		UndoCommand::undo();
+		UndoOperation::undo();
 		m_pRedoCommandStack.push(pCommand);
 	}
 }

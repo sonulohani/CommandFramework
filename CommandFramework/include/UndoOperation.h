@@ -18,16 +18,16 @@ namespace CommandFramework
 {
 	class ICommand;
 
-	class UndoCommand
+	class UndoOperation
 	{
 	public:
-		explicit UndoCommand() = default;
+		explicit UndoOperation() = default;
 
-		explicit UndoCommand(ICommand *pCommand);
+		explicit UndoOperation(ICommand *pCommand);
 
-		explicit UndoCommand(std::initializer_list<ICommand *> initializer_list);
+		explicit UndoOperation(std::initializer_list<ICommand *> initializer_list);
 
-		virtual ~UndoCommand();
+		virtual ~UndoOperation();
 
 		void pushCommand(ICommand *pCommand);
 

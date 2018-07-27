@@ -10,21 +10,21 @@
 
 #pragma once
 
-#include "UndoCommand.h"
+#include "UndoOperation.h"
 
 namespace CommandFramework
 {
 	class ICommand;
-	class UndoRedoCommand : public UndoCommand
+	class UndoRedoOperation : public UndoOperation
 	{
 	public:
-		explicit UndoRedoCommand();
+		explicit UndoRedoOperation();
 
-		explicit UndoRedoCommand(ICommand *pCommand);
+		explicit UndoRedoOperation(ICommand *pCommand);
 
-		explicit UndoRedoCommand(std::initializer_list<ICommand *> initializer_list);
+		explicit UndoRedoOperation(std::initializer_list<ICommand *> initializer_list);
 
-		virtual ~UndoRedoCommand();
+		virtual ~UndoRedoOperation();
 
 		virtual void redo();
 
