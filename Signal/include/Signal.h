@@ -47,9 +47,16 @@ public:
 		}
 	}
 
-	void emit(uint32_t id, Args... args)
+	R emit(uint32_t id, Args... args)
 	{
-		m_idToSlotMap[id](args...);
+		if(std::is_same<R, void>::value_type)
+		{
+			m_idToSlotMap[id](args...);
+		}
+		else
+		{
+			return m_idToSlotMap[id](args...);
+		}
 	}
 
 	void disconnect(uint32_t id)
