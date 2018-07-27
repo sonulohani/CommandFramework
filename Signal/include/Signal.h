@@ -26,7 +26,7 @@ public:
 	{
 		return connect([=](Args... args)
 		{
-			return (T->*func)(args...);
+			return (callable->*func)(args...);
 		});
 	}
 
@@ -35,7 +35,7 @@ public:
 	{
 		return connect([=](Args... args)
 		{
-			return (T->*func)(args...);
+			return (callable->*func)(args...);
 		});
 	}
 
