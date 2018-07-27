@@ -14,6 +14,7 @@
 
 namespace CommandFramework
 {
+	class ICommand;
 	class UndoRedoCommand : public UndoCommand
 	{
 	public:

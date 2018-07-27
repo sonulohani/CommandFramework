@@ -10,14 +10,15 @@
 
 #pragma once
 
-#include "ICommand.h"
 #include "Exception.h"
 #include <stack>
 #include <initializer_list>
 
 namespace CommandFramework
 {
-	class UndoCommand : public ICommand
+	class ICommand;
+
+	class UndoCommand
 	{
 	public:
 		explicit UndoCommand() = default;
@@ -31,9 +32,6 @@ namespace CommandFramework
 		void pushCommand(ICommand *pCommand);
 
 		virtual void undo();
-
-	private:
-		virtual void execute() override {}
 
 	protected:
 		std::stack<ICommand *> m_pUndoCommandStack;

@@ -9,6 +9,7 @@
 */
 
 #include "UndoRedoCommand.h"
+#include "ICommand.h"
 
 namespace CommandFramework 
 {
