@@ -1,0 +1,23 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "make",
+            "type": "shell",
+            "command": "cd ${workspaceFolder}/build && make",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher":"$gcc"
+        },
+        {
+            "label": "cmake",
+            "type": "shell",
+            "command": "rm -rf ${workspaceFolder}/build && mkdir ${workspaceFolder}/build && cd ${workspaceFolder}/build && cmake -G \"Unix Makefiles\" -DCMAKE_BUILD_TYPE=Debug ..",
+            "problemMatcher": []
+        }
+    ]
+}
