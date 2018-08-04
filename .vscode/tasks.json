@@ -18,6 +18,12 @@
             "type": "shell",
             "command": "rm -rf ${workspaceFolder}/build && mkdir ${workspaceFolder}/build && cd ${workspaceFolder}/build && cmake -G \"Unix Makefiles\" -DCMAKE_BUILD_TYPE=Debug ..",
             "problemMatcher": []
+        },
+        {
+            "label": "clang-format",
+            "type": "shell",
+            "command": "clang-format -i -style=LLVM ${workspaceFolder}/CommandFramework/include/*.*  ${workspaceFolder}/CommandFramework/src/*.*",
+            "problemMatcher": []
         }
     ]
 }
