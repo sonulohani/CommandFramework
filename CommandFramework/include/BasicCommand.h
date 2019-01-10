@@ -1,4 +1,4 @@
-/*
+﻿/*
  * CommandFramework
  *
  * Copyright (C) 2018-2019 Sonu Lohani
@@ -15,14 +15,14 @@
 #include <functional>
 
 namespace CommandFramework {
-template <typename Func = std::function<void()>>
-class BasicCommand : public ICommand {
-public:
-  BasicCommand(const Func &func) : m_func(func) {}
+	template <typename Func = std::function<void()>>
+	class BasicCommand : public ICommand {
+	public:
+		BasicCommand(const Func &func) : m_func(func) {}
 
-  virtual void execute() override { m_func(); }
+		virtual void execute() override { m_func(); }
 
-private:
-  Func m_func;
-};
+	private:
+		Func m_func;
+	};
 } // namespace CommandFramework

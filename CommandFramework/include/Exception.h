@@ -1,4 +1,4 @@
-/*
+﻿/*
  * CommandFramework
  *
  * Copyright (C) 2018-2019 Sonu Lohani
@@ -14,35 +14,35 @@
 #include <string>
 
 namespace CommandFramework {
-class NullPointerException : public std::exception {
-public:
-  char const *what() const noexcept override;
+	class NullPointerException : public std::exception {
+	public:
+		char const *what() const noexcept override;
 
-private:
-  std::string m_message = "Null Pointer Exception";
-};
+	private:
+		std::string m_message = "Null Pointer Exception";
+	};
 
-class NoUndoCommandException : public std::exception {
-public:
-  char const *what() const noexcept override;
+	class NoUndoCommandException : public std::exception {
+	public:
+		char const *what() const noexcept override;
 
-private:
-  std::string m_message = "No Undo Command Exception";
-};
+	private:
+		std::string m_message = "No Undo Command Exception";
+	};
 
-class NoRedoCommandException : public std::exception {
-public:
-  char const *what() const noexcept override;
+	class NoRedoCommandException : public std::exception {
+	public:
+		char const *what() const noexcept override;
 
-private:
-  std::string m_message = "No Redo Command Exception";
-};
+	private:
+		std::string m_message = "No Redo Command Exception";
+	};
 
-class NotImplementedException : public std::exception {
-public:
-  char const *what() const noexcept override;
+	class NotImplementedException : public std::exception {
+	public:
+		char const *what() const noexcept override;
 
-private:
-  std::string m_message = "Not Implemented Exception";
-};
+	private:
+		std::string m_message = "Not Implemented Exception";
+	};
 } // namespace CommandFramework

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * CommandFramework
  *
  * Copyright (C) 2018-2019 Sonu Lohani
@@ -11,20 +11,20 @@
 #include "Exception.h"
 
 namespace CommandFramework {
-char const *NullPointerException::what() const noexcept {
-  return m_message.c_str();
-}
+	char const *NullPointerException::what() const noexcept {
+		return m_message.c_str();
+	}
 
-char const *NoUndoCommandException::what() const noexcept {
-  return m_message.c_str();
-}
+	char const *NoUndoCommandException::what() const noexcept {
+		return m_message.c_str();
+	}
 
-char const *NotImplementedException::what() const noexcept {
-  return m_message.c_str();
-}
+	char const *NotImplementedException::what() const noexcept {
+		return m_message.c_str();
+	}
 
-char const *NoRedoCommandException::what() const noexcept {
-  return m_message.c_str();
-}
+	char const *NoRedoCommandException::what() const noexcept {
+		return m_message.c_str();
+	}
 
 } // namespace CommandFramework

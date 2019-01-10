@@ -1,4 +1,4 @@
-/*
+﻿/*
  * CommandFramework
  *
  * Copyright (C) 2018-2019 Sonu Lohani
@@ -11,8 +11,8 @@
 #pragma once
 
 namespace CommandFramework {
-class ICommand {
-public:
-  virtual void execute() = 0;
-};
+	class ICommand {
+	public:
+		virtual void execute() = 0;
+	};
 } // namespace CommandFramework

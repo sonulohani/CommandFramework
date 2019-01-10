@@ -1,4 +1,4 @@
-/*
+﻿/*
  * CommandFramework
  *
  * Copyright (C) 2018-2019 Sonu Lohani
@@ -12,35 +12,35 @@
 #include "ICommand.h"
 
 namespace CommandFramework {
-UndoOperation::UndoOperation(ICommand *pCommand) {
-  m_pUndoCommandStack.push(pCommand);
-}
+	UndoOperation::UndoOperation(ICommand *pCommand) {
+		m_pUndoCommandStack.push(pCommand);
+	}
 
-UndoOperation::UndoOperation(
-    std::initializer_list<ICommand *> initializer_list) {
-  for (const auto &pCommand : initializer_list) {
-    m_pUndoCommandStack.push(pCommand);
-  }
-}
+	UndoOperation::UndoOperation(
+		std::initializer_list<ICommand *> initializer_list) {
+		for (const auto &pCommand : initializer_list) {
+			m_pUndoCommandStack.push(pCommand);
+		}
+	}
 
-UndoOperation::~UndoOperation() {}
+	UndoOperation::~UndoOperation() {}
 
-void UndoOperation::pushCommand(ICommand *pCommand) {
-  m_pUndoCommandStack.push(pCommand);
-}
+	void UndoOperation::pushCommand(ICommand *pCommand) {
+		m_pUndoCommandStack.push(pCommand);
+	}
 
-void UndoOperation::undo() {
-  if (m_pUndoCommandStack.empty()) {
-    throw NoUndoCommandException();
-  }
+	void UndoOperation::undo() {
+		if (m_pUndoCommandStack.empty()) {
+			throw NoUndoCommandException();
+		}
 
-  auto pCommand = m_pUndoCommandStack.top();
+		auto pCommand = m_pUndoCommandStack.top();
 
-  if (pCommand == nullptr) {
-    throw NullPointerException();
-  }
+		if (pCommand == nullptr) {
+			throw NullPointerException();
+		}
 
-  pCommand->execute();
-  m_pUndoCommandStack.pop();
-}
+		pCommand->execute();
+		m_pUndoCommandStack.pop();
+	}
 } // namespace CommandFramework

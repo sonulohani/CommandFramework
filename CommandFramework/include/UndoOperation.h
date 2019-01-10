@@ -1,4 +1,4 @@
-/*
+﻿/*
  * CommandFramework
  *
  * Copyright (C) 2018-2019 Sonu Lohani
@@ -15,23 +15,23 @@
 #include <stack>
 
 namespace CommandFramework {
-class ICommand;
+	class ICommand;
 
-class UndoOperation {
-public:
-  explicit UndoOperation() = default;
+	class UndoOperation {
+	public:
+		explicit UndoOperation() = default;
 
-  explicit UndoOperation(ICommand *pCommand);
+		explicit UndoOperation(ICommand *pCommand);
 
-  explicit UndoOperation(std::initializer_list<ICommand *> initializer_list);
+		explicit UndoOperation(std::initializer_list<ICommand *> initializer_list);
 
-  virtual ~UndoOperation();
+		virtual ~UndoOperation();
 
-  void pushCommand(ICommand *pCommand);
+		void pushCommand(ICommand *pCommand);
 
-  virtual void undo();
+		virtual void undo();
 
-protected:
-  std::stack<ICommand *> m_pUndoCommandStack;
-};
+	protected:
+		std::stack<ICommand *> m_pUndoCommandStack;
+	};
 } // namespace CommandFramework
