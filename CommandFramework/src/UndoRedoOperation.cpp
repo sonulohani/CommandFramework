@@ -36,4 +36,17 @@ namespace CommandFramework {
 		UndoOperation::undo();
 		m_pRedoCommandStack.push(pCommand);
 	}
+
+	void UndoRedoOperation::clear()
+	{
+		UndoOperation::clear();
+		clearRedo();
+	}
+
+	void UndoRedoOperation::clearRedo()
+	{
+		while (!m_pRedoCommandStack.empty()) {
+			m_pRedoCommandStack.pop();
+		}
+	}
 } // namespace CommandFramework

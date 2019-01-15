@@ -11,12 +11,16 @@
 #pragma once
 
 namespace CommandFramework {
-	class ICommand {
+	class ICommand;
+
+	class IOperation {
 	public:
-		ICommand() = default;
+		IOperation() = default;
 
-		virtual ~ICommand() = default;
+		virtual ~IOperation() = default;
 
-		virtual void execute() = 0;
+		virtual void clear() = 0;
+
+		virtual void pushCommand(ICommand *pCommand) = 0;
 	};
 } // namespace CommandFramework

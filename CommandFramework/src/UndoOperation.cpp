@@ -11,6 +11,8 @@
 #include "UndoOperation.h"
 #include "ICommand.h"
 
+#include <algorithm>
+
 namespace CommandFramework {
 	UndoOperation::UndoOperation(ICommand *pCommand) {
 		m_pUndoCommandStack.push(pCommand);
@@ -42,5 +44,16 @@ namespace CommandFramework {
 
 		pCommand->execute();
 		m_pUndoCommandStack.pop();
+	}
+	void UndoOperation::clear()
+	{
+		clearUndo();
+	}
+
+	void UndoOperation::clearUndo()
+	{
+		while (!m_pUndoCommandStack.empty()) {
+			m_pUndoCommandStack.pop();
+		}
 	}
 } // namespace CommandFramework

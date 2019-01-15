@@ -11,13 +11,14 @@
 #pragma once
 
 #include "Exception.h"
+#include "IOperation.h"
 #include <initializer_list>
 #include <stack>
 
 namespace CommandFramework {
 	class ICommand;
 
-	class UndoOperation {
+	class UndoOperation : public IOperation {
 	public:
 		explicit UndoOperation() = default;
 
@@ -25,11 +26,15 @@ namespace CommandFramework {
 
 		explicit UndoOperation(std::initializer_list<ICommand *> initializer_list);
 
-		virtual ~UndoOperation();
+		virtual ~UndoOperation() override;
 
-		void pushCommand(ICommand *pCommand);
+		virtual void pushCommand(ICommand *pCommand) override;
 
 		virtual void undo();
+
+		virtual void clear() override;
+
+		void clearUndo();
 
 	protected:
 		std::stack<ICommand *> m_pUndoCommandStack;

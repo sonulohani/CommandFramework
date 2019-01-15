@@ -14,6 +14,7 @@
 
 namespace CommandFramework {
 	class ICommand;
+
 	class UndoRedoOperation : public UndoOperation {
 	public:
 		explicit UndoRedoOperation();
@@ -23,11 +24,15 @@ namespace CommandFramework {
 		explicit UndoRedoOperation(
 			std::initializer_list<ICommand *> initializer_list);
 
-		virtual ~UndoRedoOperation();
+		virtual ~UndoRedoOperation() override;
 
 		virtual void redo();
 
 		virtual void undo() override;
+
+		virtual void clear() override;
+
+		void clearRedo();
 
 	private:
 		std::stack<ICommand *> m_pRedoCommandStack;
